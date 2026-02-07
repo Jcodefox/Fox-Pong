@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://pr4jg65ugod7"]
+
+[ext_resource type="PackedScene" uid="uid://rkjo20cjg2uq" path="res://scenes/ball.tscn" id="1_0f027"]
+[ext_resource type="Script" uid="uid://ixxtqrtwebvw" path="res://scripts/gameplay_manager.gd" id="1_rt2n2"]
+[ext_resource type="PackedScene" uid="uid://detiwu1gghciv" path="res://scenes/paddle.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://ck5cplpl1mtmj" path="res://scenes/wall.tscn" id="3_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://hhhdygrju80g" path="res://scenes/horizontal_wall.tscn" id="3_pu3yx"]
+[ext_resource type="Texture2D" uid="uid://cksb02lpnhc3h" path="res://art/bg.png" id="5_gubc5"]
+
+[node name="MainScene" type="Node2D" unique_id=1334353839]
+script = ExtResource("1_rt2n2")
+
+[node name="BG" type="CanvasLayer" parent="." unique_id=1087265528]
+layer = -2
+
+[node name="TextureRect" type="TextureRect" parent="BG" unique_id=2036633431]
+modulate = Color(0.5370987, 0.5370987, 0.5370987, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_gubc5")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1948223499]
+
+[node name="P1Score" type="Label" parent="UI" unique_id=1915011872]
+unique_name_in_owner = true
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 104.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="P2Score" type="Label" parent="UI" unique_id=2140638784]
+unique_name_in_owner = true
+offset_left = 1008.0
+offset_top = 48.0
+offset_right = 1097.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[node name="Ball" parent="." unique_id=535890320 instance=ExtResource("1_0f027")]
+position = Vector2(576, 324)
+
+[node name="Paddle1" parent="." unique_id=125925247 instance=ExtResource("2_2c62f")]
+position = Vector2(35, 324)
+
+[node name="Paddle2" parent="." unique_id=1886626756 instance=ExtResource("2_2c62f")]
+position = Vector2(1117, 324)
+player = "p2"
+
+[node name="Ceiling" parent="." unique_id=1726347620 instance=ExtResource("3_pu3yx")]
+position = Vector2(576, 10)
+
+[node name="Floor" parent="." unique_id=1358961934 instance=ExtResource("3_pu3yx")]
+position = Vector2(576, 638)
+
+[node name="LeftWall" parent="." unique_id=1440539445 groups=["p1_goal"] instance=ExtResource("3_7ykc4")]
+position = Vector2(10, 324)
+
+[node name="RightWall" parent="." unique_id=1443273750 instance=ExtResource("3_7ykc4")]
+position = Vector2(1142, 324)
+
+[connection signal="area_entered" from="Ball" to="Ball" method="_on_area_entered"]
