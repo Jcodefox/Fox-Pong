@@ -1,24 +1,31 @@
 [gd_scene format=3 uid="uid://detiwu1gghciv"]
 
 [ext_resource type="Script" uid="uid://cx7ne8ka4hb2c" path="res://scripts/paddle.gd" id="1_3xiby"]
+[ext_resource type="Texture2D" uid="uid://1jq6nwasx1me" path="res://art/paddle.png" id="2_y7wee"]
+
+[sub_resource type="Curve" id="Curve_y7wee"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_mo4dg"]
+colors = PackedColorArray(0.78521717, 0.7852172, 0.78521717, 0, 0.78431374, 0.78431374, 0.78431374, 0.78431374)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0f027"]
 size = Vector2(20, 125)
 
-[sub_resource type="Gradient" id="Gradient_7hmd8"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3xiby"]
-gradient = SubResource("Gradient_7hmd8")
-width = 1
-
 [node name="Paddle" type="Area2D" unique_id=125925247 groups=["paddle"]]
+modulate = Color(0, 0.93333334, 0.972549, 1)
 script = ExtResource("1_3xiby")
+
+[node name="Trail" type="Line2D" parent="." unique_id=1045289723]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 20.0
+width_curve = SubResource("Curve_y7wee")
+gradient = SubResource("Gradient_mo4dg")
+joint_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1905837334]
 shape = SubResource("RectangleShape2D_0f027")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1011643414]
-scale = Vector2(20, 125)
-texture = SubResource("GradientTexture1D_3xiby")
+texture = ExtResource("2_y7wee")

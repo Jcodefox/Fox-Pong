@@ -20,9 +20,25 @@ width = 256
 height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cbx31"]
 radius = 11.0
+
+[sub_resource type="Gradient" id="Gradient_f7cbr"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4dx81"]
+gradient = SubResource("Gradient_f7cbr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_4dx81"]
+offsets = PackedFloat32Array(0.73320156, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Ball" type="Area2D" unique_id=1705843799]
 modulate = Color(1.405418e-05, 0.9340565, 0.9707748, 1)
@@ -30,7 +46,7 @@ script = ExtResource("1_7s4qf")
 
 [node name="Trail" type="Line2D" parent="." unique_id=1540191104]
 points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-width = 32.0
+width = 16.0
 width_curve = SubResource("Curve_7s4qf")
 gradient = SubResource("Gradient_cxlvu")
 joint_mode = 2
@@ -41,3 +57,36 @@ texture = SubResource("GradientTexture2D_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999550955]
 shape = SubResource("CircleShape2D_cbx31")
+
+[node name="HitParticles" type="CPUParticles2D" parent="." unique_id=1932009342]
+emitting = false
+texture = SubResource("GradientTexture2D_4dx81")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 200.0
+scale_amount_min = 0.05
+scale_amount_max = 0.15
+color_ramp = SubResource("Gradient_4dx81")
+
+[node name="OrbitParticles" type="CPUParticles2D" parent="." unique_id=271196532]
+amount = 200
+texture = SubResource("GradientTexture2D_4dx81")
+lifetime = 5.0
+randomness = 1.0
+lifetime_randomness = 1.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 2.0
+scale_amount_min = 0.05
+scale_amount_max = 0.15
+color_ramp = SubResource("Gradient_4dx81")

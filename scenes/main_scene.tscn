@@ -46,23 +46,29 @@ horizontal_alignment = 2
 [node name="Ball" parent="." unique_id=535890320 instance=ExtResource("1_0f027")]
 position = Vector2(576, 324)
 
-[node name="Paddle1" parent="." unique_id=125925247 instance=ExtResource("2_2c62f")]
+[node name="Paddle1" parent="." unique_id=125925247 node_paths=PackedStringArray("ball") instance=ExtResource("2_2c62f")]
 position = Vector2(35, 324)
+ball = NodePath("../Ball")
 
-[node name="Paddle2" parent="." unique_id=1886626756 instance=ExtResource("2_2c62f")]
+[node name="Paddle2" parent="." unique_id=1886626756 node_paths=PackedStringArray("ball") instance=ExtResource("2_2c62f")]
 position = Vector2(1117, 324)
+is_ai = true
+ball = NodePath("../Ball")
 player = "p2"
+SPEED = 150.0
 
-[node name="Ceiling" parent="." unique_id=1726347620 instance=ExtResource("3_pu3yx")]
+[node name="Walls" type="Node2D" parent="." unique_id=2084290488]
+
+[node name="Ceiling" parent="Walls" unique_id=1726347620 instance=ExtResource("3_pu3yx")]
 position = Vector2(576, 10)
 
-[node name="Floor" parent="." unique_id=1358961934 instance=ExtResource("3_pu3yx")]
+[node name="Floor" parent="Walls" unique_id=1358961934 instance=ExtResource("3_pu3yx")]
 position = Vector2(576, 638)
 
-[node name="LeftWall" parent="." unique_id=1440539445 groups=["p1_goal"] instance=ExtResource("3_7ykc4")]
+[node name="LeftWall" parent="Walls" unique_id=1443273750 groups=["p1_goal"] instance=ExtResource("3_7ykc4")]
 position = Vector2(10, 324)
 
-[node name="RightWall" parent="." unique_id=1443273750 instance=ExtResource("3_7ykc4")]
+[node name="RightWall" parent="Walls" unique_id=853582717 instance=ExtResource("3_7ykc4")]
 position = Vector2(1142, 324)
 
 [connection signal="area_entered" from="Ball" to="Ball" method="_on_area_entered"]

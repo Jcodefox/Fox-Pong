@@ -26,8 +26,10 @@ func _on_area_entered(area: Area2D) -> void:
 		var paddle_height: float = area.height
 		var weight: float = (area.position.y - position.y) / (paddle_height * 0.5)
 		direction = direction.lerp(Vector2.UP, weight * 0.5)
+		$HitParticles.restart()
 	elif area.is_in_group("wall"):
 		direction.y = -direction.y
+		$HitParticles.restart()
 	else:
 		global_position = spawn_point
 		randomize_direction()
