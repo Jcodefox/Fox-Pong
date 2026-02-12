@@ -51,6 +51,20 @@ width_curve = SubResource("Curve_7s4qf")
 gradient = SubResource("Gradient_cxlvu")
 joint_mode = 2
 
+[node name="Trail2" type="Line2D" parent="." unique_id=639525665]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 8.0
+width_curve = SubResource("Curve_7s4qf")
+gradient = SubResource("Gradient_cxlvu")
+joint_mode = 2
+
+[node name="Trail3" type="Line2D" parent="." unique_id=2022204605]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 8.0
+width_curve = SubResource("Curve_7s4qf")
+gradient = SubResource("Gradient_cxlvu")
+joint_mode = 2
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779912744]
 scale = Vector2(0.125, 0.125)
 texture = SubResource("GradientTexture2D_cxlvu")
