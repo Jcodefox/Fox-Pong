@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://rkjo20cjg2uq"]
 
 [ext_resource type="Script" uid="uid://bln2fyoj67bba" path="res://scripts/ball.gd" id="1_7s4qf"]
+[ext_resource type="AudioStream" uid="uid://4kvcl17mk7vk" path="res://sfx/paddle_ball.wav" id="2_4dx81"]
+[ext_resource type="AudioStream" uid="uid://drpjcghdg8mtf" path="res://sfx/lose_ball.wav" id="2_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://dmb5mi6sfun0x" path="res://sfx/wall_ball.wav" id="2_f7cbr"]
 
 [sub_resource type="Curve" id="Curve_7s4qf"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -104,3 +107,12 @@ orbit_velocity_max = 2.0
 scale_amount_min = 0.05
 scale_amount_max = 0.15
 color_ramp = SubResource("Gradient_4dx81")
+
+[node name="Paddle" type="AudioStreamPlayer" parent="." unique_id=980271575]
+stream = ExtResource("2_4dx81")
+
+[node name="Wall" type="AudioStreamPlayer" parent="." unique_id=1720224315]
+stream = ExtResource("2_f7cbr")
+
+[node name="Lose" type="AudioStreamPlayer" parent="." unique_id=1904471379]
+stream = ExtResource("2_cxlvu")

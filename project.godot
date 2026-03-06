@@ -24,7 +24,8 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://art/": "purple",
 "res://scenes/": "pink",
-"res://scripts/": "yellow"
+"res://scripts/": "yellow",
+"res://sfx/": "red"
 }
 
 [global_group]

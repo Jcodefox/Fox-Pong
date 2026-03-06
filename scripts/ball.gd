@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var camera: Camera2D
 var spawn_point: Vector2 = Vector2.ZERO
 var speed: float = 400
 var direction: Vector2 = Vector2.RIGHT
@@ -33,17 +34,23 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("paddle"):
 		direction.x = -direction.x
+		camera.shake(Vector2.RIGHT * 4, 25, 0.1)
 		var paddle_height: float = area.height
 		var weight: float = (area.position.y - position.y) / (paddle_height * 0.5)
 		direction = direction.lerp(Vector2.UP, weight * 0.5)
 		$HitParticles.restart()
+		$Paddle.play()
 	elif area.is_in_group("wall"):
 		direction.y = -direction.y
+		camera.shake(Vector2.UP * 3, 25, 0.1)
 		$HitParticles.restart()
+		$Wall.play()
 	else:
+		camera.shake(Vector2.RIGHT * 15, 25, 0.1)
 		global_position = spawn_point
 		randomize_direction()
 		if area.is_in_group("p1_goal"):
 			get_tree().current_scene.p2_score += 1
 		else:
 			get_tree().current_scene.p1_score += 1
+		$Lose.play()
