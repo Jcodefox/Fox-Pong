@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	$Trail3.position.y = sin(-time * 10) * 10
 	for i in range(1, len($Trail3.points)):
 		$Trail3.points[i - 1] = $Trail3.points[i] - direction.normalized() * delta * speed
+		
 	position += direction.normalized() * delta * speed
 	time += delta
 
@@ -46,6 +47,12 @@ func _on_area_entered(area: Area2D) -> void:
 		$HitParticles.restart()
 		$Wall.play()
 	else:
+		for i in range(len($Trail.points)):
+			$Trail.points[i] = Vector2.ZERO
+		for i in range(len($Trail2.points)):
+			$Trail2.points[i] = Vector2.ZERO
+		for i in range(len($Trail3.points)):
+			$Trail3.points[i] = Vector2.ZERO
 		camera.shake(Vector2.RIGHT * 15, 25, 0.1)
 		global_position = spawn_point
 		randomize_direction()

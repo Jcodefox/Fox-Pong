@@ -110,9 +110,12 @@ color_ramp = SubResource("Gradient_4dx81")
 
 [node name="Paddle" type="AudioStreamPlayer" parent="." unique_id=980271575]
 stream = ExtResource("2_4dx81")
+bus = &"SFX"
 
 [node name="Wall" type="AudioStreamPlayer" parent="." unique_id=1720224315]
 stream = ExtResource("2_f7cbr")
+bus = &"SFX"
 
 [node name="Lose" type="AudioStreamPlayer" parent="." unique_id=1904471379]
 stream = ExtResource("2_cxlvu")
+bus = &"SFX"
