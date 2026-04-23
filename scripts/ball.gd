@@ -5,6 +5,7 @@ var spawn_point: Vector2 = Vector2.ZERO
 var speed: float = 400
 var direction: Vector2 = Vector2.RIGHT
 var time: float = 0.0
+var in_play: bool = false
 
 func _ready() -> void:
 	spawn_point = global_position
@@ -18,18 +19,20 @@ func randomize_direction() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	for i in range(1, len($Trail.points)):
-		$Trail.points[i - 1] = $Trail.points[i] - direction.normalized() * delta * speed
-	$Trail2.position.x = cos(time * 10) * 10
-	$Trail2.position.y = sin(time * 10) * 10
-	for i in range(1, len($Trail2.points)):
-		$Trail2.points[i - 1] = $Trail2.points[i] - direction.normalized() * delta * speed
-	$Trail3.position.x = cos(-time * 10) * 10
-	$Trail3.position.y = sin(-time * 10) * 10
-	for i in range(1, len($Trail3.points)):
-		$Trail3.points[i - 1] = $Trail3.points[i] - direction.normalized() * delta * speed
-		
-	position += direction.normalized() * delta * speed
+	if Input.is_action_just_pressed("p1_up") or Input.is_action_just_pressed("p1_down"):
+		in_play = true
+	if in_play:	
+		for i in range(1, len($Trail.points)):
+			$Trail.points[i - 1] = $Trail.points[i] - direction.normalized() * delta * speed
+		$Trail2.position.x = cos(time * 10) * 10
+		$Trail2.position.y = sin(time * 10) * 10
+		for i in range(1, len($Trail2.points)):
+			$Trail2.points[i - 1] = $Trail2.points[i] - direction.normalized() * delta * speed
+		$Trail3.position.x = cos(-time * 10) * 10
+		$Trail3.position.y = sin(-time * 10) * 10
+		for i in range(1, len($Trail3.points)):
+			$Trail3.points[i - 1] = $Trail3.points[i] - direction.normalized() * delta * speed
+		position += direction.normalized() * delta * speed
 	time += delta
 
 func _on_area_entered(area: Area2D) -> void:
@@ -55,6 +58,7 @@ func _on_area_entered(area: Area2D) -> void:
 			$Trail3.points[i] = Vector2.ZERO
 		camera.shake(Vector2.RIGHT * 15, 25, 0.1)
 		global_position = spawn_point
+		in_play = false
 		randomize_direction()
 		if area.is_in_group("p1_goal"):
 			get_tree().current_scene.p2_score += 1
