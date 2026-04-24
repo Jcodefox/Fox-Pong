@@ -6,6 +6,8 @@ extends Area2D
 @export var min_y: float = 25.0
 @export var max_y: float = 623.0
 
+@onready var start_pos: Vector2 = position
+
 var height: float
 
 @export var SPEED: float = 300
@@ -14,11 +16,18 @@ func _ready() -> void:
 	height = $CollisionShape2D.shape.size.y
 
 func _physics_process(delta: float) -> void:
-	if is_ai:
-		_ai_movement(delta)
+	if ball.in_play:
+		if is_ai:
+			_ai_movement(delta)
+		else:
+			_player_movement(delta)
 	else:
-		_player_movement(delta)
+		_reset_pos()
 	
+func _reset_pos() -> void:
+	position = start_pos
+	for i in range(len($Trail.points)):
+		$Trail.points[i] = Vector2.ZERO
 	
 func _player_movement(delta: float) -> void:
 	var motion: float = Input.get_axis(player + "_up", player + "_down")
