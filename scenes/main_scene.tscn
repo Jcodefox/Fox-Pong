@@ -115,6 +115,14 @@ grow_vertical = 0
 button_pressed = true
 text = "SFX"
 
+[node name="Credits" type="Label" parent="MainMenu" unique_id=1734345181]
+offset_left = 35.0
+offset_top = 566.0
+offset_right = 211.0
+offset_bottom = 615.0
+text = "SFX made with sfxr.me
+Made by Jcodefox"
+
 [node name="Ball" parent="." unique_id=535890320 node_paths=PackedStringArray("camera") instance=ExtResource("1_0f027")]
 position = Vector2(576, 324)
 camera = NodePath("../Camera2D")
