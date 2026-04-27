@@ -5,6 +5,7 @@ extends Area2D
 @export var player: String = "p1"
 @export var min_y: float = 25.0
 @export var max_y: float = 623.0
+@export var ai_speed_multiplier: float = 0.5
 
 @onready var start_pos: Vector2 = position
 
@@ -40,7 +41,10 @@ func _ai_movement(delta: float) -> void:
 	_move(motion, delta)
 	
 func _move(motion: float, delta: float) -> void:
+	var speed: float = SPEED
+	if is_ai:
+		speed *= ai_speed_multiplier
 	for i in range(1, len($Trail.points)):
-		$Trail.points[i - 1] = $Trail.points[i] - Vector2(0, motion) * delta * SPEED
-	position.y += motion * SPEED * delta
+		$Trail.points[i - 1] = $Trail.points[i] - Vector2(0, motion) * delta * speed
+	position.y += motion * speed * delta
 	position.y = clampf(position.y, min_y + (height * 0.5), max_y - (height * 0.5))

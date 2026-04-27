@@ -86,6 +86,35 @@ text = "[pulse  freq=1.5 ease=-10.0 color=#ffffff10][move up or down to start][/
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="2Player" type="CheckButton" parent="MainMenu" unique_id=1538842777]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -98.0
+offset_right = -33.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "2-Player"
+
+[node name="SFX" type="CheckButton" parent="MainMenu" unique_id=852547711]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -67.0
+offset_right = -33.0
+offset_bottom = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+button_pressed = true
+text = "SFX"
+
 [node name="Ball" parent="." unique_id=535890320 node_paths=PackedStringArray("camera") instance=ExtResource("1_0f027")]
 position = Vector2(576, 324)
 camera = NodePath("../Camera2D")
@@ -96,10 +125,8 @@ ball = NodePath("../Ball")
 
 [node name="Paddle2" parent="." unique_id=1886626756 node_paths=PackedStringArray("ball") instance=ExtResource("2_2c62f")]
 position = Vector2(1117, 324)
-is_ai = true
 ball = NodePath("../Ball")
 player = "p2"
-SPEED = 150.0
 
 [node name="Walls" type="Node2D" parent="." unique_id=2084290488]
 
